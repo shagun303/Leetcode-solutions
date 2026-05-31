@@ -1,20 +1,16 @@
 class Solution {
     public int removeDuplicates(int[] nums) {
-     HashMap <Integer,Integer> fre = new HashMap<>();
+        if (nums.length <= 2) return nums.length;
 
-      int index = 0;
-        for(int arr:nums){
-      fre.put(arr,fre.getOrDefault(arr,0)+1);
+        int i = 2; 
 
-      if(fre.get(arr) <= 2){
-        nums[index] = arr;
-        index++;
-      }
-
+        for (int j = 2; j < nums.length; j++) {
+          
+            if (nums[j] != nums[i - 2]) {
+                nums[i] = nums[j];
+                i++;
+            }
         }
-        
-        
-      
-        return index;
+        return i; 
     }
 }
