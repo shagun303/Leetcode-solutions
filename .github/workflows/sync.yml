@@ -1,15 +1,13 @@
 name: Sync Leetcode
 
 on:
-  workflow_dispatch:
-  schedule:
-    - cron: "0 8 * * 6" # Runs every Saturday at 8 AM
+  workflow_dispatch   # run manually anytime
 
 jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
-      contents: write   # allow the action to push changes to your repo
+      contents: write
     steps:
       - name: Sync
         uses: joshcai/leetcode-sync@v1.7
@@ -19,4 +17,5 @@ jobs:
           leetcode-session: ${{ secrets.LEETCODE_SESSION }}
           destination-folder: solutions
           verbose: true
+
 
